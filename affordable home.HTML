@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>US Rent Affordability Calculator: How Much Rent Can I Afford?</title>
+    <meta name="title" content="US Rent Affordability Calculator: How Much Rent Can I Afford?">
+    <meta name="description" content="Calculate your comfortable rent budget in the US using gross salary, federal/state tax rates, 40x landlord rule, and student loan debts. Free interactive tool.">
+    <meta name="keywords" content="rent affordability calculator us, how much rent can i afford america, 30 percent rule rent, 40x income rule rent, US apartment budget calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/us-rent-affordability-calculator">
+
+    <!-- Google AdSense Script (Replace with your Publisher ID) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/us-rent-affordability-calculator">
+    <meta property="og:title" content="US Rent Affordability Calculator: How Much Rent Can You Afford?">
+    <meta property="og:description" content="Calculate your apartment budget across US cities using real US tax brackets, 40x salary rules, and 50/30/20 budget guidelines.">
+    <meta property="og:image" content="https://yourwebsite.com/images/us-rent-calculator-og.jpg">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/us-rent-affordability-calculator">
+    <meta property="twitter:title" content="US Rent Affordability Calculator">
+    <meta property="twitter:description" content="Calculate your maximum affordable apartment rent in seconds based on US salary & debt obligations.">
+    <meta property="twitter:image" content="https://yourwebsite.com/images/us-rent-calculator-og.jpg">
+
+    <!-- Structured Data (JSON-LD) for Google USA Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://yourwebsite.com/us-rent-affordability-calculator#webapp",
+          "name": "US Rent Affordability Calculator",
+          "url": "https://yourwebsite.com/us-rent-affordability-calculator",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "All",
+          "description": "Calculate affordable rent across US cities based on gross W-2 income, federal and state taxes, 40x landlord income requirements, and DTI ratios."
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://yourwebsite.com/us-rent-affordability-calculator#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much rent can I afford on a $70,000 salary in the US?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Under the standard US 30% rule, a $70,000 annual salary yields a monthly gross income of $5,833. Spending 30% means your target rent is $1,750 per month."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the 40x salary rule used by US landlords?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In major US housing markets like New York, Los Angeles, and Chicago, landlords require your gross annual income to be at least 40 times the monthly rent. For a $2,000 apartment, you need a minimum gross salary of $80,000."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Should I calculate rent using gross or take-home pay in the US?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "US landlords qualify applicants based on W-2 gross annual income. However, for personal financial health, calculating rent based on take-home (net) pay accounts for state taxes, 401(k) contributions, and health insurance."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            --primary-hover: #1e40af;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --accent-green: #059669;
+            --accent-amber: #d97706;
+            --accent-red: #dc2626;
+            --radius: 12px;
+            --shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 90px; /* Offset for sticky bottom ad */
+        }
+
+        .header-nav {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flag-icon {
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Ad Container Styling to avoid Cumulative Layout Shift (CLS) */
+        .ad-unit {
+            background: #f1f5f9;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            text-align: center;
+            margin: 24px 0;
+            padding: 10px;
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .ad-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+
+        .sticky-bottom-ad {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
+            z-index: 9999;
+            padding: 6px;
+            text-align: center;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 30px 0 10px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-section p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Calculator Layout */
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .calc-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 14px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 14px 12px 32px;
+            font-size: 1rem;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+
+        .slider-wrapper {
+            margin-top: 8px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e2e8f0;
+            outline: none;
+            accent-color: var(--primary);
+        }
+
+        .select-control {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 1rem;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            background: #fff;
+            outline: none;
+        }
+
+        /* Results Display */
+        .results-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .rent-display-box {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .rent-display-box .label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .rent-display-box .value {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 8px 0;
+        }
+
+        .rent-tiers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .tier-box {
+            background: #fff;
+            padding: 14px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .tier-box .tier-name {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .tier-box .tier-val {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+
+        .tier-box.conservative { border-top: 4px solid var(--accent-green); }
+        .tier-box.standard { border-top: 4px solid var(--primary); }
+        .tier-box.aggressive { border-top: 4px solid var(--accent-amber); }
+
+        /* Breakdown Progress Bar */
+        .budget-breakdown {
+            background: #fff;
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stacked-bar {
+            height: 18px;
+            background: #e2e8f0;
+            border-radius: 9px;
+            display: flex;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .bar-segment {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .segment-rent { background: var(--primary); }
+        .segment-debts { background: var(--accent-amber); }
+        .segment-expenses { background: var(--accent-red); }
+        .segment-leftover { background: var(--accent-green); }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.8rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* Content Section */
+        .content-section {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.75rem;
+            color: var(--secondary);
+            margin: 30px 0 16px;
+        }
+
+        .content-section h2:first-child {
+            margin-top: 0;
+        }
+
+        .content-section h3 {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin: 20px 0 12px;
+        }
+
+        .content-section p {
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .content-section ul {
+            margin: 0 0 20px 24px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.95rem;
+        }
+
+        .matrix-table th, .matrix-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .matrix-table th {
+            background-color: #f1f5f9;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 18px 0;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .faq-answer {
+            margin-top: 10px;
+            color: var(--text-muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-nav">
+        <a href="#" class="brand-logo">
+            <span class="flag-icon">🇺🇸</span> US RentScale
+        </a>
+    </header>
+
+    <main class="container">
+        
+        <!-- Hero Title -->
+        <section class="hero-section">
+            <h1>US Rent Affordability Calculator</h1>
+            <p>Calculate your target apartment rent range across US cities based on gross annual salary, federal/state taxes, monthly debt payments, and landlord screening rules.</p>
+        </section>
+
+        <!-- Ad Placement #1: Header Leaderboard Banner -->
+        <div class="ad-unit">
+            <div class="ad-label">Advertisement</div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- Interactive Calculator Grid -->
+        <section class="calculator-grid" id="calculator">
+            
+            <!-- Controls Card -->
+            <div class="calc-card">
+                <div class="card-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Your Financial Profile (USD)
+                </div>
+
+                <div class="form-group">
+                    <label for="annualIncome">Gross Annual Salary (W-2 or 1099)</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="annualIncome" class="form-control" value="75000" step="2500">
+                    </div>
+                    <div class="slider-wrapper">
+                        <input type="range" id="incomeSlider" class="slider" min="25000" max="300000" step="2500" value="75000">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="monthlyDebt">Monthly Debts (Student Loans, Auto, Credit Cards)</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="monthlyDebt" class="form-control" value="450" step="50">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="monthlyExpenses">Estimated Living Costs (Groceries, Electric, Internet)</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="monthlyExpenses" class="form-control" value="1250" step="50">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="taxRate">US State & Federal Tax Estimate</label>
+                    <select id="taxRate" class="select-control">
+                        <option value="0.18">No State Tax States (TX, FL, WA, NV ~18%)</option>
+                        <option value="0.24" selected>Standard US Average (~24% Effective Rate)</option>
+                        <option value="0.32">High Tax States (CA, NY, NJ, MA ~32%)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="budgetRule">Calculation Rule</label>
+                    <select id="budgetRule" class="select-control">
+                        <option value="30gross" selected>30% Gross Income Rule (US Standard)</option>
+                        <option value="30net">30% Net Take-Home Pay (Conservative)</option>
+                        <option value="dti">28/36 DTI Lender Standard (Debt Adjusted)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Dynamic Results Card -->
+            <div class="calc-card results-card">
+                <div>
+                    <div class="card-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Affordable Rent Target
+                    </div>
+
+                    <div class="rent-display-box">
+                        <div class="label">Recommended Monthly Rent</div>
+                        <div class="value" id="recommendedRent">$1,875</div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);" id="landlordMin">Landlord Qualification: <b>$75,000/yr</b> needed (40x Rule)</p>
+                    </div>
+
+                    <div class="rent-tiers">
+                        <div class="tier-box conservative">
+                            <div class="tier-name">Conservative</div>
+                            <div class="tier-val" id="tierConservative">$1,563</div>
+                        </div>
+                        <div class="tier-box standard">
+                            <div class="tier-name">Standard</div>
+                            <div class="tier-val" id="tierStandard">$1,875</div>
+                        </div>
+                        <div class="tier-box aggressive">
+                            <div class="tier-name">Aggressive</div>
+                            <div class="tier-val" id="tierAggressive">$2,188</div>
+                        </div>
+                    </div>
+
+                    <div class="budget-breakdown">
+                        <div class="progress-title">
+                            <span>Monthly Take-Home Distribution</span>
+                            <span id="takeHomeTotal">$4,750 / mo net</span>
+                        </div>
+                        <div class="stacked-bar">
+                            <div class="bar-segment segment-rent" id="barRent" style="width: 39%;"></div>
+                            <div class="bar-segment segment-debts" id="barDebts" style="width: 9%;"></div>
+                            <div class="bar-segment segment-expenses" id="barExpenses" style="width: 26%;"></div>
+                            <div class="bar-segment segment-leftover" id="barLeftover" style="width: 26%;"></div>
+                        </div>
+                        <div class="legend-grid">
+                            <div class="legend-item"><div class="dot segment-rent"></div> Rent (<span id="pctRent">39%</span>)</div>
+                            <div class="legend-item"><div class="dot segment-debts"></div> Debts (<span id="pctDebts">9%</span>)</div>
+                            <div class="legend-item"><div class="dot segment-expenses"></div> Living (<span id="pctExpenses">26%</span>)</div>
+                            <div class="legend-item"><div class="dot segment-leftover"></div> Savings/401k (<span id="pctLeftover">26%</span>)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Ad Placement #2: Native In-Feed / Display Ad -->
+        <div class="ad-unit">
+            <div class="ad-label">Sponsored Resource</div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="1234567890"
+                 data-ad-format="rectangle"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- Long-Form US SEO Content -->
+        <article class="content-section">
+            <h2>How Much Rent Can You Afford in the United States?</h2>
+            <p>Renting an apartment in the US market requires balancing strict landlord application rules against personal financial health. With rising shelter costs across major US metropolitan areas, knowing your maximum budget before submitting rental applications avoids costly application fee losses.</p>
+
+            <h2>US Rent Standards Explained</h2>
+
+            <h3>1. The 30% Gross Income Rule</h3>
+            <p>The US Department of Housing and Urban Development (HUD) considers households spending more than 30% of their gross income on housing to be "cost-burdened." The standard formula divides your total pre-tax W-2 or 1099 income by 12 and multiplies by 0.30.</p>
+            <p><em>Formula:</em> <code>(Gross Annual Salary ÷ 12) × 0.30 = Maximum Recommended Monthly Rent</code></p>
+
+            <!-- Ad Placement #3: In-Article Content Banner -->
+            <div class="ad-unit">
+                <div class="ad-label">Advertisement</div>
+                <ins class="adsbygoogle"
+                     style="display:block; text-align:center;"
+                     data-ad-layout="in-article"
+                     data-ad-format="fluid"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h3>2. The US Landlord 40x Income Rule</h3>
+            <p>Property management companies in major US cities (such as New York City, Boston, Chicago, and San Francisco) require applicants to prove gross annual income equal to at least <strong>40 times the monthly rent</strong>.</p>
+            <ul>
+                <li><strong>$1,500/mo Rent:</strong> Minimum $60,000 annual income</li>
+                <li><strong>$2,000/mo Rent:</strong> Minimum $80,000 annual income</li>
+                <li><strong>$2,500/mo Rent:</strong> Minimum $100,000 annual income</li>
+            </ul>
+
+            <h3>3. Debt-to-Income (DTI) Limit (28/36 Rule)</h3>
+            <p>If you carry heavy US student loans, auto payments, or credit card debt, US lenders suggest keeping your rent under 28% of gross income, and total debt payments + rent below 36% of gross income.</p>
+
+            <h2>US Salary to Rent Reference Table</h2>
+            <p>Use this benchmark table based on standard W-2 salaries across US tax brackets:</p>
+
+            <table class="matrix-table">
+                <thead>
+                    <tr>
+                        <th>Annual Gross Salary</th>
+                        <th>Monthly Gross</th>
+                        <th>Conservative (22%)</th>
+                        <th>Standard Target (30%)</th>
+                        <th>40x Landlord Max</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$50,000</td>
+                        <td>$4,167</td>
+                        <td>$917</td>
+                        <td>$1,250</td>
+                        <td>$1,250</td>
+                    </tr>
+                    <tr>
+                        <td>$75,000</td>
+                        <td>$6,250</td>
+                        <td>$1,375</td>
+                        <td>$1,875</td>
+                        <td>$1,875</td>
+                    </tr>
+                    <tr>
+                        <td>$100,000</td>
+                        <td>$8,333</td>
+                        <td>$1,833</td>
+                        <td>$2,500</td>
+                        <td>$2,500</td>
+                    </tr>
+                    <tr>
+                        <td>$125,000</td>
+                        <td>$10,417</td>
+                        <td>$2,292</td>
+                        <td>$3,125</td>
+                        <td>$3,125</td>
+                    </tr>
+                    <tr>
+                        <td>$150,000</td>
+                        <td>$12,500</td>
+                        <td>$2,750</td>
+                        <td>$3,750</td>
+                        <td>$3,750</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Ad Placement #4: Post-Table Display Ad -->
+            <div class="ad-unit">
+                <div class="ad-label">Sponsored Content</div>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2>Frequently Asked Questions for US Renters</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">What credit score do US landlords look for?</div>
+                <div class="faq-answer">Most US landlords look for a minimum credit score of 620 to 650. High-demand luxury buildings in Tier-1 cities often prefer credit scores of 700 or higher.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are US utility bills included in the 30% rent rule?</div>
+                <div class="faq-answer">Ideally yes. In the US, electricity, natural gas, water, internet, and trash services average $150–$300 per month depending on weather and state location.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What happens if I don't meet the 40x rule in the US?</div>
+                <div class="faq-answer">If your salary falls short, US landlords generally accept a institutional guarantor (like The Guarantors or Rhino), a personal co-signer earning 80x the rent, or proof of liquid savings.</div>
+            </div>
+
+            <!-- Ad Placement #5: Pre-Footer/FAQ Ad -->
+            <div class="ad-unit">
+                <div class="ad-label">Advertisement</div>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 US RentScale Financial Tools. Designed for US personal finance planning and educational calculations.</p>
+        </div>
+    </footer>
+
+    <!-- Ad Placement #6: Sticky Footer Anchor Ad -->
+    <div class="sticky-bottom-ad">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="1234567890"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- US Calculation Engine -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const annualIncomeInput = document.getElementById('annualIncome');
+            const incomeSlider = document.getElementById('incomeSlider');
+            const monthlyDebtInput = document.getElementById('monthlyDebt');
+            const monthlyExpensesInput = document.getElementById('monthlyExpenses');
+            const taxRateSelect = document.getElementById('taxRate');
+            const budgetRuleSelect = document.getElementById('budgetRule');
+
+            const recommendedRentEl = document.getElementById('recommendedRent');
+            const landlordMinEl = document.getElementById('landlordMin');
+            const tierConservativeEl = document.getElementById('tierConservative');
+            const tierStandardEl = document.getElementById('tierStandard');
+            const tierAggressiveEl = document.getElementById('tierAggressive');
+            const takeHomeTotalEl = document.getElementById('takeHomeTotal');
+
+            const barRent = document.getElementById('barRent');
+            const barDebts = document.getElementById('barDebts');
+            const barExpenses = document.getElementById('barExpenses');
+            const barLeftover = document.getElementById('barLeftover');
+
+            const pctRent = document.getElementById('pctRent');
+            const pctDebts = document.getElementById('pctDebts');
+            const pctExpenses = document.getElementById('pctExpenses');
+            const pctLeftover = document.getElementById('pctLeftover');
+
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(amount);
+            }
+
+            function calculateAffordability() {
+                const annualIncome = parseFloat(annualIncomeInput.value) || 0;
+                const monthlyDebt = parseFloat(monthlyDebtInput.value) || 0;
+                const monthlyExpenses = parseFloat(monthlyExpensesInput.value) || 0;
+                const taxRate = parseFloat(taxRateSelect.value) || 0.24;
+                const ruleChoice = budgetRuleSelect.value;
+
+                const monthlyGross = annualIncome / 12;
+                const monthlyNet = monthlyGross * (1 - taxRate);
+
+                let targetRent = 0;
+                let conservativeRent = 0;
+                let aggressiveRent = 0;
+
+                if (ruleChoice === '30gross') {
+                    targetRent = monthlyGross * 0.30;
+                    conservativeRent = monthlyGross * 0.22;
+                    aggressiveRent = monthlyGross * 0.35;
+                } else if (ruleChoice === '30net') {
+                    targetRent = monthlyNet * 0.30;
+                    conservativeRent = monthlyNet * 0.22;
+                    aggressiveRent = monthlyNet * 0.35;
+                } else if (ruleChoice === 'dti') {
+                    const maxHousingDebt = (monthlyGross * 0.36) - monthlyDebt;
+                    targetRent = Math.max(0, maxHousingDebt);
+                    conservativeRent = Math.max(0, targetRent * 0.85);
+                    aggressiveRent = targetRent * 1.15;
+                }
+
+                recommendedRentEl.textContent = formatCurrency(targetRent);
+                tierConservativeEl.textContent = formatCurrency(conservativeRent);
+                tierStandardEl.textContent = formatCurrency(targetRent);
+                tierAggressiveEl.textContent = formatCurrency(aggressiveRent);
+
+                const requiredIncome40x = targetRent * 40;
+                landlordMinEl.innerHTML = `Landlord Qualification: <b>${formatCurrency(requiredIncome40x)}/yr</b> needed (40x Rule)`;
+                takeHomeTotalEl.textContent = `${formatCurrency(monthlyNet)} / mo net`;
+
+                const rentPct = Math.min(100, Math.max(0, (targetRent / monthlyNet) * 100));
+                const debtPct = Math.min(100 - rentPct, Math.max(0, (monthlyDebt / monthlyNet) * 100));
+                const expPct = Math.min(100 - rentPct - debtPct, Math.max(0, (monthlyExpenses / monthlyNet) * 100));
+                const leftoverPct = Math.max(0, 100 - rentPct - debtPct - expPct);
+
+                barRent.style.width = rentPct + '%';
+                barDebts.style.width = debtPct + '%';
+                barExpenses.style.width = expPct + '%';
+                barLeftover.style.width = leftoverPct + '%';
+
+                pctRent.textContent = Math.round(rentPct) + '%';
+                pctDebts.textContent = Math.round(debtPct) + '%';
+                pctExpenses.textContent = Math.round(expPct) + '%';
+                pctLeftover.textContent = Math.round(leftoverPct) + '%';
+            }
+
+            annualIncomeInput.addEventListener('input', function() {
+                incomeSlider.value = this.value;
+                calculateAffordability();
+            });
+
+            incomeSlider.addEventListener('input', function() {
+                annualIncomeInput.value = this.value;
+                calculateAffordability();
+            });
+
+            monthlyDebtInput.addEventListener('input', calculateAffordability);
+            monthlyExpensesInput.addEventListener('input', calculateAffordability);
+            taxRateSelect.addEventListener('change', calculateAffordability);
+            budgetRuleSelect.addEventListener('change', calculateAffordability);
+
+            calculateAffordability();
+        });
+    </script>
+</body>
+</html>
